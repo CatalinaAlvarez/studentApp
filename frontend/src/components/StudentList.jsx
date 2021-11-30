@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import "bootswatch/dist/pulse/bootstrap.min.css";
 import StudentService from '../services/StudentService';
+import { Link } from 'react-router-dom';
 
 
 function StudentList (){
@@ -21,8 +22,9 @@ function StudentList (){
   return (
     <div className="container">
       <h1>App Students</h1>
+      <hr/>
       <div>
-        <hr/>
+        <Link to="/agregar" className="btn btn-primary mb-2">Agregar estudiante</Link>
         <table className= "table table-bordered table-striped">
         <thead className ="thead-dark">
             <tr>
@@ -32,6 +34,7 @@ function StudentList (){
               <td>Grado</td>
               <td>Correo</td>
               <td>Teléfono</td>
+              <td>Funciones</td>
             </tr>
           </thead>
           <tbody>
