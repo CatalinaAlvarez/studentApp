@@ -47,6 +47,11 @@ function StudentList (){
                   <td>{student.level}</td>
                   <td>{student.email}</td>
                   <td>{student.phone}</td>
+                  <td>
+                    <button className="btn btn-info">Modificar</button>
+                    <button className="btn btn-danger ml-2">Eliminar</button>
+                    
+                  </td>
                 </tr>
               ))
             }
