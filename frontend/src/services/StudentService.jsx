@@ -1,4 +1,4 @@
-import httpClient from '../Http-common';
+import httpClient from '../http-common';
 
 const getAll = () => {
 
@@ -6,5 +6,4 @@ const getAll = () => {
 
 }
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default {getAll};

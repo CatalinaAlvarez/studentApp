@@ -20,30 +20,35 @@ function App (){
   }, [])
 
   return (
-    <div className="">
+    <div className="container">
       <h1>App Students</h1>
       <div>
-        <table border="1" cellPadding="10">
-          <tr>
-            <td>Documento</td>
-            <td>Nombre</td>
-            <td>Apellido</td>
-            <td>Grado</td>
-            <td>Correo</td>
-            <td>Teléfono</td>
-          </tr>
-          {
-            students.map(student => (
-              <tr key={student.id}>
-                <td>{student.id}</td>
-                <td>{student.name}</td>
-                <td>{student.lastName}</td>
-                <td>{student.level}</td>
-                <td>{student.email}</td>
-                <td>{student.phone}</td>
-              </tr>
-            ))
-          }
+        <hr/>
+        <table className= "table table-bordered table-striped">
+        <thead className ="thead-dark">
+            <tr>
+              <td>Documento</td>
+              <td>Nombre</td>
+              <td>Apellido</td>
+              <td>Grado</td>
+              <td>Correo</td>
+              <td>Teléfono</td>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              students.map(student => (
+                <tr key={student.id}>
+                  <td>{student.id}</td>
+                  <td>{student.name}</td>
+                  <td>{student.lastName}</td>
+                  <td>{student.level}</td>
+                  <td>{student.email}</td>
+                  <td>{student.phone}</td>
+                </tr>
+              ))
+            }
+          </tbody>
         </table>
       </div>
     </div>
