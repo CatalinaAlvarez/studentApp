@@ -25,4 +25,15 @@ public class StudentController {
         return repository.save(student);
     }
 
+
+    @GetMapping("/students/{id}")
+    public Student getSingleStudent(@PathVariable Long id){
+        return repository.findById(id).get();
+    }
+
+    @PutMapping("/students")
+    public Student updateStudentDetails(@RequestBody Student student){
+        return repository.save(student);
+    }
+
 }

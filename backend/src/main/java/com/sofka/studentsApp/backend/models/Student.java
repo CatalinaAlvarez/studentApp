@@ -54,7 +54,7 @@ public class Student {
         return idLevel;
     }
 
-    public void setIdLevel(String level) {
+    public void setIdLevel(String idLevel) {
         this.idLevel = idLevel;
     }
 

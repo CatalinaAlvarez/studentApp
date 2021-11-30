@@ -4,8 +4,16 @@ const getAll = () => {
     return httpClient.get('/students');
 }
 
-const create = (data) => {
+const create = data => {
     return httpClient.post("/students", data);
 }
 
-export default {getAll, create};
+const get = id => {
+    return httpClient.get(`/students/${id}`);
+}
+
+const update = (data) => {
+    return httpClient.put('/students', data);
+}
+
+export default { getAll, create, get, update };
