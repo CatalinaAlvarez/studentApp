@@ -11,17 +11,17 @@ public class Student {
     private long id;
     private String name;
     private String lastName;
-    private String level;
+    private String idLevel;
     private String email;
     private String phone;
 
     public Student() {
     }
 
-    public Student(String name, String lastName, String level, String email, String phone) {
+    public Student(String name, String lastName, String idLevel, String email, String phone) {
         this.name = name;
         this.lastName = lastName;
-        this.level = level;
+        this.idLevel = idLevel;
         this.email = email;
         this.phone = phone;
     }
@@ -50,12 +50,12 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public String getLevel() {
-        return level;
+    public String getIdLevel() {
+        return idLevel;
     }
 
-    public void setLevel(String level) {
-        this.level = level;
+    public void setIdLevel(String level) {
+        this.idLevel = idLevel;
     }
 
     public String getEmail() {
