@@ -3,6 +3,8 @@ package com.sofka.studentsApp.backend.controllers;
 import com.sofka.studentsApp.backend.models.Student;
 import com.sofka.studentsApp.backend.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,5 +37,13 @@ public class StudentController {
     public Student updateStudentDetails(@RequestBody Student student){
         return repository.save(student);
     }
+
+    @DeleteMapping("/students/{id}")
+    public ResponseEntity<HttpStatus> deleteStudentById(@PathVariable Long id){
+        repository.deleteById(id);
+        return new ResponseEntity<HttpStatus>(HttpStatus.NO_CONTENT);
+    }
+
+
 
 }

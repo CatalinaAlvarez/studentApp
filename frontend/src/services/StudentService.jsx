@@ -12,8 +12,12 @@ const get = id => {
     return httpClient.get(`/students/${id}`);
 }
 
-const update = (data) => {
+const update = data => {
     return httpClient.put('/students', data);
 }
 
-export default { getAll, create, get, update };
+const remove = id => {
+    return httpClient.delete(`/students/${id}`);
+}
+
+export default { getAll, create, get, update, remove };
