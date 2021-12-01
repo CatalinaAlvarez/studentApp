@@ -7,18 +7,18 @@ import javax.persistence.*;
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true)
     private long id;
     private String name;
     private String lastName;
-    private String idLevel;
+    private long idLevel;
     private String email;
     private String phone;
 
-    public Student() {
-    }
+    public Student() {}
 
-    public Student(String name, String lastName, String idLevel, String email, String phone) {
+    public Student(long id, String name, String lastName, long idLevel, String email, String phone) {
+        this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.idLevel = idLevel;
@@ -50,11 +50,11 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public String getIdLevel() {
+    public long getIdLevel() {
         return idLevel;
     }
 
-    public void setIdLevel(String idLevel) {
+    public void setIdLevel(long idLevel) {
         this.idLevel = idLevel;
     }
 

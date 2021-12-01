@@ -20,4 +20,5 @@ const remove = id => {
     return httpClient.delete(`/students/${id}`);
 }
 
+
 export default { getAll, create, get, update, remove };

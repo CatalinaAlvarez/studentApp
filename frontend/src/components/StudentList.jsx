@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import "bootswatch/dist/pulse/bootstrap.min.css";
 import StudentService from '../services/StudentService';
+import LevelServices from '../services/LevelServices';
 import { Link } from 'react-router-dom';
 
 
@@ -28,12 +29,28 @@ function StudentList (){
   }, []);
 
 
+
+  const [ level, setLevel ] = useState([]);
+
+  useEffect(()=>{
+    LevelServices.getAll()
+    .then(response => {
+      setLevel(response.data)
+      console.log(level)
+    })
+    .catch(error => {
+      console.log('Algo salio mal 444', error);
+    })
+  },[]);
+
+
   //DELETE
   const init = () => {
     StudentService.getAll()
     .then(response => {
       console.log('Imprimiendo Estudiantes', response.data);
       setStudents(response.data);
+      setFilterStudent(response.data);
     })
     .catch(error => {
       console.log('Esto salió mal: ', error);
@@ -49,11 +66,13 @@ function StudentList (){
       .then(response => {
           console.log('Se elimino correctamente', response.data);
           init();
+
       })
       .catch(error => {
           console.log('Ocurrio un error al eliminar', error);
       })
   }
+
 
 
   return (
@@ -87,7 +106,7 @@ function StudentList (){
                   <td>{student.id}</td>
                   <td>{student.name}</td>
                   <td>{student.lastName}</td>
-                  <td>{student.level}</td>
+                  <td>{}</td>
                   <td>{student.email}</td>
                   <td>{student.phone}</td>
                   <td>

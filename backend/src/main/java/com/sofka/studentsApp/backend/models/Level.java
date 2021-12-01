@@ -9,16 +9,16 @@ import javax.persistence.Table;
 public class Level {
 
     @Id
-    private Long id;
+    private long id;
     private String name;
 
     public Level() {}
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

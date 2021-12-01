@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom';
 
 const AddStudent = () => {
 
+    const [id, setId] = useState("");
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [level, setLevel] = useState("");
+    const [idLevel, setIdLevel] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const history = useHistory();
@@ -15,7 +16,7 @@ const AddStudent = () => {
     const saveStudent = (e) =>{
         e.preventDefault();
 
-        const student = {name, lastName, level, email, phone}
+        const student = {id,name, lastName, idLevel, email, phone}
         StudentService.create(student)
         .then(response =>{
             console.log("Estudiante añadido correctamente", response.data);
@@ -26,13 +27,22 @@ const AddStudent = () => {
     }
 
 
-
     return ( 
         <div className="container">
             <h1>Añadir nuevo estudiante</h1>
             <hr/>
+            <p>{}</p>
+            <hr/>
             <form>
                 <div className="form-group">
+                    <input
+                    type="text"
+                    className="form-control col-4 mb-3"
+                    id="id"
+                    value={id}
+                    onChange={(e) => setId(e.target.value)}
+                    placeholder="Ingrese el Documento"
+                    />
                     <input
                     type="text"
                     className="form-control col-4 mb-3"
@@ -52,9 +62,9 @@ const AddStudent = () => {
                     <input
                     type="text"
                     className="form-control col-4 mb-3"
-                    id="level"
-                    value={level}
-                    onChange={(e) => setLevel(e.target.value)}
+                    id="idLevel"
+                    value={idLevel}
+                    onChange={(e) => setIdLevel(e.target.value)}
                     placeholder="Ingrese el grado"
                     />
                     <input
