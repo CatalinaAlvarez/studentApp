@@ -92,7 +92,7 @@ function StudentList (){
                   <td>{student.email}</td>
                   <td>{student.phone}</td>
                   <td>
-                    <Link to={`/profesores/editar/${student.id}`} className="btn btn-info">Modificar</Link>
+                    <Link to={`/estudiantes/editar/${student.id}`} className="btn btn-info">Modificar</Link>
                     <button className="btn btn-danger ml-2" onClick={() => {
                       handleDelete(student.id);
                     }}>Eliminar</button>
