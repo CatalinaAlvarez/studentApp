@@ -88,7 +88,7 @@ function TeacherList (){
                   <td>{teacher.id}</td>
                   <td>{teacher.name}</td>
                   <td>{teacher.lastName}</td>
-                  <td>{teacher.idLevel}</td>
+                  <td>{teacher.level}</td>
                   <td>{teacher.email}</td>
                   <td>{teacher.phone}</td>
                   <td>

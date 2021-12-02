@@ -23,7 +23,7 @@ public class Teacher {
     @Column(nullable = false)
     private String lastName;
     @Column(nullable = false)
-    private int level;
+    private String level;
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)
@@ -53,11 +53,11 @@ public class Teacher {
         this.lastName = lastName;
     }
 
-    public int getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 

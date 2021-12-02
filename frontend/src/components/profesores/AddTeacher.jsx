@@ -27,13 +27,16 @@ const AddTeacher = () => {
             setAlertMessage("Por favor ingrese un nombre valido");
         }else if(!alfaNumericRE.test(teachers.lastName)){
             setSendAlert(true);
-            setAlertMessage("Por favor ingrese un nombre valido");
+            setAlertMessage("Por favor ingrese un apellido valido");
         }else if(!emailRE.test(teachers.email)){
             setSendAlert(true);
             setAlertMessage("Por favor ingrese un correo valido");
         }else if(teachers.id<=0){
             setSendAlert(true);
             setAlertMessage("Por favor ingrese un documento valido");
+        }else if(!teachers.level){
+            setSendAlert(true);
+            setAlertMessage("Por favor seleccione un grado valido");
         }else if(teachers.phone<=0){
             setSendAlert(true);
             setAlertMessage("Por favor ingrese un teléfono valido");
@@ -79,14 +82,27 @@ const AddTeacher = () => {
                     onChange={(e) => setLastName(e.target.value)}
                     placeholder="Ingrese el apellido"
                     />
-                    <input
+                    <label>Seleccione un grado</label> 
+                    <select
                     type="text"
                     className="form-control col-4 mb-3"
                     id="level"
                     value={level}
                     onChange={(e) => setLevel(e.target.value)}
-                    placeholder="Ingrese el grado"
-                    />
+                    >
+                        <option>Preescolar</option>
+                        <option>Primero</option>
+                        <option>Segundo</option>
+                        <option>Tercero</option>
+                        <option>Cuarto</option>
+                        <option>Quinto</option>
+                        <option>Sexto</option>
+                        <option>Séptimo</option>
+                        <option>Octavo</option>
+                        <option>Noveno</option>
+                        <option>Decimo</option>
+                        <option>Once</option>
+                    </select>
                     <input
                     type="text"
                     className="form-control col-4 mb-3"

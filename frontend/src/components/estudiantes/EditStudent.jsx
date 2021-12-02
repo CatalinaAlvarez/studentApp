@@ -52,7 +52,7 @@ const EditStudent = () => {
                 .then(student => {
                     setName(student.data.name);
                     setLastName(student.data.lastName);
-                    setLevel(student.data.level.id);
+                    setLevel(student.data.level);
                     setEmail(student.data.email);
                     setPhone(student.data.phone);
             })
@@ -84,14 +84,27 @@ const EditStudent = () => {
                     onChange={(e) => setLastName(e.target.value)}
                     placeholder="Modicar el apellido"
                     />
-                    <input
+                    <label>Seleccione un grado</label> 
+                    <select
                     type="text"
                     className="form-control col-4 mb-3"
-                    id="level.id"
+                    id="level"
                     value={level}
                     onChange={(e) => setLevel(e.target.value)}
-                    placeholder="Modicar el grado"
-                    />
+                    >
+                        <option>Preescolar</option>
+                        <option>Primero</option>
+                        <option>Segundo</option>
+                        <option>Tercero</option>
+                        <option>Cuarto</option>
+                        <option>Quinto</option>
+                        <option>Sexto</option>
+                        <option>Séptimo</option>
+                        <option>Octavo</option>
+                        <option>Noveno</option>
+                        <option>Decimo</option>
+                        <option>Once</option>
+                    </select>
                     <input
                     type="text"
                     className="form-control col-4 mb-3"

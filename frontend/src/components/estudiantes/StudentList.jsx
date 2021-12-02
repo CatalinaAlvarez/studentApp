@@ -88,7 +88,7 @@ function StudentList (){
                   <td>{student.id}</td>
                   <td>{student.name}</td>
                   <td>{student.lastName}</td>
-                  <td>{student.idLevel}</td>
+                  <td>{student.level}</td>
                   <td>{student.email}</td>
                   <td>{student.phone}</td>
                   <td>
