@@ -33,7 +33,7 @@ const EditStudent = () => {
                 .then(student => {
                     setName(student.data.name);
                     setLastName(student.data.lastName);
-                    setLevel(student.data.level);
+                    setLevel(student.data.level.id);
                     setEmail(student.data.email);
                     setPhone(student.data.phone);
             })
@@ -70,7 +70,7 @@ const EditStudent = () => {
                     <input
                     type="text"
                     className="form-control col-4 mb-3"
-                    id="level"
+                    id="level.id"
                     value={level}
                     onChange={(e) => setLevel(e.target.value)}
                     placeholder="Modicar el grado"

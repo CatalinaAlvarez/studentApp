@@ -12,8 +12,8 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "students")
-public class Student {
+@Table(name = "teacher")
+public class Teacher {
 
     @Id
     @Column(unique = true)
