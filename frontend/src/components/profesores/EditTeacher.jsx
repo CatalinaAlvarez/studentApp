@@ -41,7 +41,7 @@ const EditTeacher = () => {
         TeacherServices.update(teacher)
         .then(response =>{
             console.log("Profesor editado correctamente", response.data);
-            history.push("/profesores");
+            history.push(`/profesores/info/${id}`);
         }).catch(error =>{
             console.log("Ha ocurrido un error al modificar", error);
         });

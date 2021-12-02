@@ -75,9 +75,7 @@ function TeacherList (){
               <td>Documento</td>
               <td>Nombre</td>
               <td>Apellido</td>
-              <td>Grado</td>
-              <td>Correo</td>
-              <td>Teléfono</td>
+              <td>Grado que dirige</td>
               <td>Funciones</td>
             </tr>
           </thead>
@@ -89,10 +87,8 @@ function TeacherList (){
                   <td>{teacher.name}</td>
                   <td>{teacher.lastName}</td>
                   <td>{teacher.level}</td>
-                  <td>{teacher.email}</td>
-                  <td>{teacher.phone}</td>
                   <td>
-                    <Link to={`/profesores/editar/${teacher.id}`} className="btn btn-info">Modificar</Link>
+                    <Link to={`/profesores/info/${teacher.id}`} className="btn btn-primary">Más Info...</Link>
                     <button className="btn btn-danger ml-2" onClick={() => {
                       handleDelete(teacher.id);
                     }}>Eliminar</button>

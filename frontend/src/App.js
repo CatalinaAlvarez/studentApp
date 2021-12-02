@@ -10,6 +10,8 @@ import EditTeacher from "./components/profesores/EditTeacher";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import "bootswatch/dist/united/bootstrap.min.css";
+import MoreInfoStudent from "./components/estudiantes/MoreInfoStudent";
+import MoreInfoTeacher from './components/profesores/MoreInfoTeacher'
 
 
 function App(){
@@ -20,9 +22,11 @@ function App(){
       <div>
         <Switch>
           <Route exact path="/" component={Home}/>
+          <Route path="/estudiantes/info/:id" component={MoreInfoStudent}/>
           <Route path="/estudiantes/editar/:id" component={EditStudent}/>
           <Route path="/estudiantes" component={StudentList}/>
           <Route path="/profesores/editar/:id" component={EditTeacher}/>
+          <Route path="/profesores/info/:id" component={MoreInfoTeacher}/>
           <Route path="/agregar" component={AddStudent}/>
           <Route path="/profesores" component={TeacherList}/>
           <Route path="/agregarprofesores" component={AddTeacher}/>

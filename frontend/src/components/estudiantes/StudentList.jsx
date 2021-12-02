@@ -76,8 +76,6 @@ function StudentList (){
               <td>Nombre</td>
               <td>Apellido</td>
               <td>Grado</td>
-              <td>Correo</td>
-              <td>Teléfono</td>
               <td>Funciones</td>
             </tr>
           </thead>
@@ -89,10 +87,8 @@ function StudentList (){
                   <td>{student.name}</td>
                   <td>{student.lastName}</td>
                   <td>{student.level}</td>
-                  <td>{student.email}</td>
-                  <td>{student.phone}</td>
                   <td>
-                    <Link to={`/estudiantes/editar/${student.id}`} className="btn btn-info">Modificar</Link>
+                    <Link to={`/estudiantes/info/${student.id}`} className="btn btn-primary">Más Info...</Link>
                     <button className="btn btn-danger ml-2" onClick={() => {
                       handleDelete(student.id);
                     }}>Eliminar</button>

@@ -39,7 +39,7 @@ const EditStudent = () => {
         StudentService.update(student)
         .then(response =>{
             console.log("Estudiante editado correctamente", response.data);
-            history.push("/estudiantes");
+            history.push(`/estudiantes/info/${id}`);
         }).catch(error =>{
             console.log("Ha ocurrido un error al modificar", error);
         });

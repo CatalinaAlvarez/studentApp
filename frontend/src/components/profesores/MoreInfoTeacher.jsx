@@ -1,0 +1,71 @@
+import React, { useState,useEffect } from 'react';
+import "bootswatch/dist/united/bootstrap.min.css";
+import TeacherServices from '../../services/TeacherServices';
+import { useParams } from "react-router";
+import { Link } from 'react-router-dom';
+
+
+function MoreInfoTeacher (){
+
+    const {id} = useParams();
+    const [name, setName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [level, setLevel] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+
+    useEffect(() => {
+        if(id){
+            TeacherServices.get(id)
+                .then(teacher => {
+                    setName(teacher.data.name);
+                    setLastName(teacher.data.lastName);
+                    setLevel(teacher.data.level);
+                    setEmail(teacher.data.email);
+                    setPhone(teacher.data.phone);
+            })
+            .catch(error => {
+                console.log('Hubo un error', error)
+            })
+        }
+        },[])
+
+    return (
+        <div className="container">
+        <br/>
+        <h1>Docente {name} {lastName}</h1>
+        <hr/>
+        <div>
+            <table className= "table table-bordered table-striped">
+            <thead className ="thead-dark">
+                <tr>
+                <td>Documento</td>
+                <td>Nombre</td>
+                <td>Apellido</td>
+                <td>Grado que dirige</td>
+                <td>Correo</td>
+                <td>Teléfono</td>
+                <td>Funciones</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr key={id}>
+                <td>{id}</td>
+                <td>{name}</td>
+                <td>{lastName}</td>
+                <td>{level}</td>
+                <td>{email}</td>
+                <td>{phone}</td>
+                <td>
+                    <Link to={`/profesores/editar/${id}`} className="btn btn-info">Modificar</Link>
+                </td>
+                </tr>                
+            </tbody>
+            </table>
+            <Link to={`/profesores`}>Volver a la lista</Link>
+        </div>
+        </div>
+    );
+}
+
+export default MoreInfoTeacher;
