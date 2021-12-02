@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
-import StudentService from "../services/StudentService";
+import StudentService from "../../services/StudentService";
 import { Link } from 'react-router-dom';
 
 const EditStudent = () => {

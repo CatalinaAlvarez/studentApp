@@ -1,26 +1,26 @@
 import React, { useState,useEffect } from 'react';
-import "bootswatch/dist/pulse/bootstrap.min.css";
-import TeacherService from '../services/TeacherServices';
+import "bootswatch/dist/united/bootstrap.min.css";
+import StudentService from '../../services/StudentService';
 import { Link } from 'react-router-dom';
 
 
-function TeacherList (){
+function StudentList (){
 
-  const [ teachers, setTeachers ] = useState([]);
-  const [ filterTeachers, setFilterTeachers ] = useState([]);
+  const [ students, setStudents ] = useState([]);
+  const [ filterStudents, setFilterStudent ] = useState([]);
 
   //FILTRADO POR NOMBRES
-  function searchTeachers(busqueda){
+  function searchStudents(busqueda){
     const {value} = busqueda.target;
-    const filter = teachers.filter(teacher => teacher.name.toLowerCase().includes(value.toLowerCase()));
-    setFilterTeachers(filter);
+    const filter = students.filter(student => student.name.toLowerCase().includes(value.toLowerCase()));
+    setFilterStudent(filter);
   }
 
   useEffect(() => {
-    TeacherService.getAll()
+    StudentService.getAll()
     .then(response => {
-        setTeachers(response.data);
-        setFilterTeachers(response.data)
+      setStudents(response.data);
+      setFilterStudent(response.data)
     })
     .catch(error => {
       console.log('Algo salio mal', error);
@@ -29,11 +29,11 @@ function TeacherList (){
 
   //DELETE
   const init = () => {
-    TeacherService.getAll()
+    StudentService.getAll()
     .then(response => {
       console.log('Imprimiendo Estudiantes', response.data);
-      setTeachers(response.data);
-      setFilterTeachers(response.data);
+      setStudents(response.data);
+      setFilterStudent(response.data);
     })
     .catch(error => {
       console.log('Esto salió mal: ', error);
@@ -45,7 +45,7 @@ function TeacherList (){
   },[]);
 
   const handleDelete = (id) => {
-    TeacherService.remove(id)
+    StudentService.remove(id)
       .then(response => {
           console.log('Se elimino correctamente', response.data);
           init();
@@ -60,15 +60,15 @@ function TeacherList (){
 
   return (
     <div className="container">
-      <h1>Administrar Profesores</h1>
+      <h1>Administrar estudiantes</h1>
       <hr/>
       <input
       class="form-control col-4 mb-3"
       placeholder="Buscar estudiante por Documento"
-      onChange={searchTeachers}
+      onChange={searchStudents}
       ></input>
       <div>
-        <Link to="/agregarprofesores" className="btn btn-primary mb-2">Agregar profesor</Link>
+        <Link to="/agregar" className="btn btn-primary mb-2">Agregar estudiante</Link>
         <table className= "table table-bordered table-striped">
         <thead className ="thead-dark">
             <tr>
@@ -83,18 +83,18 @@ function TeacherList (){
           </thead>
           <tbody>
             {
-              filterTeachers.map(teacher => (
-                <tr key={teacher.id}>
-                  <td>{teacher.id}</td>
-                  <td>{teacher.name}</td>
-                  <td>{teacher.lastName}</td>
-                  <td>{teacher.idLevel}</td>
-                  <td>{teacher.email}</td>
-                  <td>{teacher.phone}</td>
+              filterStudents.map(student => (
+                <tr key={student.id}>
+                  <td>{student.id}</td>
+                  <td>{student.name}</td>
+                  <td>{student.lastName}</td>
+                  <td>{student.idLevel}</td>
+                  <td>{student.email}</td>
+                  <td>{student.phone}</td>
                   <td>
-                    <Link to={`/profesores/editar/${teacher.id}`} className="btn btn-info">Modificar</Link>
+                    <Link to={`/students/editar/${student.id}`} className="btn btn-info">Modificar</Link>
                     <button className="btn btn-danger ml-2" onClick={() => {
-                      handleDelete(teacher.id);
+                      handleDelete(student.id);
                     }}>Eliminar</button>
                   </td>
                 </tr>
@@ -107,4 +107,4 @@ function TeacherList (){
   );
 }
 
-export default TeacherList;
+export default StudentList;

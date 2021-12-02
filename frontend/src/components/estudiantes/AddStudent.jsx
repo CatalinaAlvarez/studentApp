@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router";
-import StudentService from "../services/StudentService";
+import StudentService from "../../services/StudentService";
 import { Link } from 'react-router-dom';
-import TeacherServices from "../services/TeacherServices";
 
-const AddTeacher = () => {
+
+const AddStudent = () => {
 
     const [id, setId] = useState("");
     const [name, setName] = useState("");
@@ -14,35 +14,22 @@ const AddTeacher = () => {
     const [phone, setPhone] = useState("");
     const history = useHistory();
 
-    const saveTeacher = (e) =>{
+    const saveStudent = (e) =>{
         e.preventDefault();
 
-        const teachers = {id,name, lastName, level, email, phone}
-        StudentService.create(teachers)
+        const student = {id,name, lastName, level, email, phone}
+        StudentService.create(student)
         .then(response =>{
             console.log("Estudiante añadido correctamente", response.data);
-            history.push("/profesores");
+            history.push("/");
         }).catch(error =>{
             console.log("Ha ocurrido un error al agregar", error);
         });
     }
 
-    const [levels, setLevels] = useState([]);
-
-    useEffect(() => {
-        TeacherServices.getAll()
-        .then(response => {
-            setLevels(response.data)
-        })
-        .catch(error => {
-            console.log('Hubo un error', error)
-        })
-    },)
-
-
     return (
         <div className="container">
-            <h1>Añadir nuevo Profesor</h1>
+            <h1>Añadir nuevo estudiante</h1>
             <hr/>
             <p>{}</p>
             <hr/>
@@ -90,14 +77,14 @@ const AddTeacher = () => {
                     />
                 </div>
                 <div>
-                    <button className="btn btn-primary" onClick={(e) =>saveTeacher(e)}>Agregar</button>
+                    <button className="btn btn-primary" onClick={(e) =>saveStudent(e)}>Agregar</button>
                 </div>
             </form>
             <hr/>
-            <Link to="/agregarprofesores">Volver a la lista</Link>
+            <Link to="/">Volver a la lista</Link>
         </div>
 
-);
+     );
 }
 
-export default AddTeacher;
+export default AddStudent;

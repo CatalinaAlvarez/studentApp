@@ -1,26 +1,26 @@
 import React, { useState,useEffect } from 'react';
 import "bootswatch/dist/pulse/bootstrap.min.css";
-import StudentService from '../services/StudentService';
+import TeacherServices from '../../services/TeacherServices';
 import { Link } from 'react-router-dom';
 
 
-function StudentList (){
+function TeacherList (){
 
-  const [ students, setStudents ] = useState([]);
-  const [ filterStudents, setFilterStudent ] = useState([]);
+  const [ teachers, setTeachers ] = useState([]);
+  const [ filterTeachers, setFilterTeachers ] = useState([]);
 
   //FILTRADO POR NOMBRES
-  function searchStudents(busqueda){
+  function searchTeachers(busqueda){
     const {value} = busqueda.target;
-    const filter = students.filter(student => student.name.toLowerCase().includes(value.toLowerCase()));
-    setFilterStudent(filter);
+    const filter = teachers.filter(teacher => teacher.name.toLowerCase().includes(value.toLowerCase()));
+    setFilterTeachers(filter);
   }
 
   useEffect(() => {
-    StudentService.getAll()
+    TeacherServices.getAll()
     .then(response => {
-      setStudents(response.data);
-      setFilterStudent(response.data)
+        setTeachers(response.data);
+        setFilterTeachers(response.data)
     })
     .catch(error => {
       console.log('Algo salio mal', error);
@@ -29,11 +29,11 @@ function StudentList (){
 
   //DELETE
   const init = () => {
-    StudentService.getAll()
+    TeacherServices.getAll()
     .then(response => {
       console.log('Imprimiendo Estudiantes', response.data);
-      setStudents(response.data);
-      setFilterStudent(response.data);
+      setTeachers(response.data);
+      setFilterTeachers(response.data);
     })
     .catch(error => {
       console.log('Esto salió mal: ', error);
@@ -45,7 +45,7 @@ function StudentList (){
   },[]);
 
   const handleDelete = (id) => {
-    StudentService.remove(id)
+    TeacherServices.remove(id)
       .then(response => {
           console.log('Se elimino correctamente', response.data);
           init();
@@ -60,16 +60,15 @@ function StudentList (){
 
   return (
     <div className="container">
-      <h1>App Students</h1>
+      <h1>Administrar Profesores</h1>
       <hr/>
-      
-      <input 
-      class="form-control col-4 mb-3" 
-      placeholder="Buscar estudiante por Documento"
-      onChange={searchStudents}
+      <input
+      class="form-control col-4 mb-3"
+      placeholder="Buscar Profesor por Nombre"
+      onChange={searchTeachers}
       ></input>
       <div>
-        <Link to="/agregar" className="btn btn-primary mb-2">Agregar estudiante</Link>
+        <Link to="/agregarprofesores" className="btn btn-primary mb-2">Agregar profesor</Link>
         <table className= "table table-bordered table-striped">
         <thead className ="thead-dark">
             <tr>
@@ -84,18 +83,18 @@ function StudentList (){
           </thead>
           <tbody>
             {
-              filterStudents.map(student => (
-                <tr key={student.id}>
-                  <td>{student.id}</td>
-                  <td>{student.name}</td>
-                  <td>{student.lastName}</td>
-                  <td>{student.idLevel}</td>
-                  <td>{student.email}</td>
-                  <td>{student.phone}</td>
+              filterTeachers.map(teacher => (
+                <tr key={teacher.id}>
+                  <td>{teacher.id}</td>
+                  <td>{teacher.name}</td>
+                  <td>{teacher.lastName}</td>
+                  <td>{teacher.idLevel}</td>
+                  <td>{teacher.email}</td>
+                  <td>{teacher.phone}</td>
                   <td>
-                    <Link to={`/students/editar/${student.id}`} className="btn btn-info">Modificar</Link>
+                    <Link to={`/profesores/editar/${teacher.id}`} className="btn btn-info">Modificar</Link>
                     <button className="btn btn-danger ml-2" onClick={() => {
-                      handleDelete(student.id);
+                      handleDelete(teacher.id);
                     }}>Eliminar</button>
                   </td>
                 </tr>
@@ -108,4 +107,4 @@ function StudentList (){
   );
 }
 
-export default StudentList;
+export default TeacherList;
