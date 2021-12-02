@@ -63,7 +63,7 @@ function StudentList (){
       <h1>Administrar estudiantes</h1>
       <hr/>
       <input
-      class="form-control col-4 mb-3"
+      className="form-control col-4 mb-3"
       placeholder="Buscar estudiante por Documento"
       onChange={searchStudents}
       ></input>

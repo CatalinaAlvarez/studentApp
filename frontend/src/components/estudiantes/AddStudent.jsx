@@ -60,7 +60,7 @@ const AddStudent = () => {
                     placeholder="Ingrese el apellido"
                     />
                     <input
-                    type="text"
+                    type="email"
                     className="form-control col-4 mb-3"
                     id="email"
                     value={email}
