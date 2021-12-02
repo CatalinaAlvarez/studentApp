@@ -3,6 +3,7 @@ import "bootswatch/dist/united/bootstrap.min.css";
 import StudentService from '../../services/StudentService';
 import { useParams } from "react-router";
 import { Link } from 'react-router-dom';
+import GradeList from '../notas/GradeList'
 
 
 function MoreInfoStudent (){
@@ -45,7 +46,7 @@ function MoreInfoStudent (){
                 <td>Grado</td>
                 <td>Correo</td>
                 <td>Teléfono</td>
-                <td>Funciones</td>
+                <td>Acciones</td>
                 </tr>
             </thead>
             <tbody>
@@ -62,8 +63,9 @@ function MoreInfoStudent (){
                 </tr>                
             </tbody>
             </table>
-            <Link to={`/estudiantes`}>Volver a la lista</Link>
+        <GradeList></GradeList>
         </div>
+        <Link to={`/estudiantes`}>Volver a la lista</Link>
         </div>
     );
 }

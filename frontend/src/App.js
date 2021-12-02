@@ -9,9 +9,10 @@ import AddTeacher from "./components/profesores/AddTeacher";
 import EditTeacher from "./components/profesores/EditTeacher";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
-import "bootswatch/dist/united/bootstrap.min.css";
+import "bootswatch/dist/udnio/bootstrap.min.css";
 import MoreInfoStudent from "./components/estudiantes/MoreInfoStudent";
-import MoreInfoTeacher from './components/profesores/MoreInfoTeacher'
+import MoreInfoTeacher from './components/profesores/MoreInfoTeacher';
+import EditGrade from './components/notas/EditGrade';
 
 
 function App(){
@@ -23,6 +24,7 @@ function App(){
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route path="/estudiantes/info/:id" component={MoreInfoStudent}/>
+          <Route path="/estudiantes/notas/:id" component={EditGrade}/>
           <Route path="/estudiantes/editar/:id" component={EditStudent}/>
           <Route path="/estudiantes" component={StudentList}/>
           <Route path="/profesores/editar/:id" component={EditTeacher}/>

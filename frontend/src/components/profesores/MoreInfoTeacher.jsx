@@ -45,7 +45,7 @@ function MoreInfoTeacher (){
                 <td>Grado que dirige</td>
                 <td>Correo</td>
                 <td>Teléfono</td>
-                <td>Funciones</td>
+                <td>Acciones</td>
                 </tr>
             </thead>
             <tbody>

@@ -76,7 +76,7 @@ function TeacherList (){
               <td>Nombre</td>
               <td>Apellido</td>
               <td>Grado que dirige</td>
-              <td>Funciones</td>
+              <td>Acciones</td>
             </tr>
           </thead>
           <tbody>

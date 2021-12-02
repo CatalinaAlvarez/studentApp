@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "level")
+@Table(name = "grade")
 public class Grade {
     @Id
     @Column(unique = true, nullable = false)

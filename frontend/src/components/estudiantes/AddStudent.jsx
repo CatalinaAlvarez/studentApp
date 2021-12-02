@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import StudentService from "../../services/StudentService";
+import GradeService from "../../services/GradeService";
 import { Link } from 'react-router-dom';
 
 
@@ -23,6 +24,7 @@ const AddStudent = () => {
         e.preventDefault();
 
         const student = {id,name, lastName, level, email, phone};
+        const grades = {id, math: "", language: "", science: "", politics: "", physics: "", arts: "", biology: "", chemistry: "", sports: "", english: ""}
 
         if (!alfaNumericRE.test(student.name)) {
             setSendAlert(true);
@@ -49,6 +51,15 @@ const AddStudent = () => {
             }).catch(error =>{
                 console.log("Ha ocurrido un error al agregar", error);
             });
+
+            GradeService.create(grades)
+            .then(response =>{
+                history.push("/estudiantes");
+            }).catch(error =>{
+                console.log("Ha ocurrido un error al agregar", error);
+            });
+            
+
             setSendAlert(false);
         }
     }

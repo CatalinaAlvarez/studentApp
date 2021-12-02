@@ -76,7 +76,7 @@ function StudentList (){
               <td>Nombre</td>
               <td>Apellido</td>
               <td>Grado</td>
-              <td>Funciones</td>
+              <td>Acciones</td>
             </tr>
           </thead>
           <tbody>
