@@ -14,7 +14,7 @@ const AddTeacher = () => {
     const [sendAlert, setSendAlert] = useState(false);
     const [alertMessage, setAlertMessage] = useState("");
     const history = useHistory();
-    const alfaNumericRE = /[A-Za-z0-9_]/;
+    const alfaNumericRE = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
     const emailRE = /^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 
     const saveTeacher = (e) =>{
@@ -24,10 +24,10 @@ const AddTeacher = () => {
 
         if (!alfaNumericRE.test(teachers.name)) {
             setSendAlert(true);
-            setAlertMessage("Por favor complete el nombre con caracteres alfanuméricos");
+            setAlertMessage("Por favor ingrese un nombre valido");
         }else if(!alfaNumericRE.test(teachers.lastName)){
             setSendAlert(true);
-            setAlertMessage("Por favor complete el apellido con caracteres alfanuméricos");
+            setAlertMessage("Por favor ingrese un nombre valido");
         }else if(!emailRE.test(teachers.email)){
             setSendAlert(true);
             setAlertMessage("Por favor ingrese un correo valido");

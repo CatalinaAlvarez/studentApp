@@ -11,13 +11,31 @@ const EditStudent = () => {
     const [level, setLevel] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
+    const [sendAlert, setSendAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState("");
     const history = useHistory();
     const {id} = useParams();
+    const alfaNumericRE = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
+    const emailRE = /^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 
     const saveStudent = (e) =>{
         e.preventDefault();
 
         const student = { id, name, lastName, level, email, phone }
+        
+        if (!alfaNumericRE.test(student.name)) {
+            setSendAlert(true);
+            setAlertMessage("Por favor ingrese un nombre valido");
+        }else if(!alfaNumericRE.test(student.lastName)){
+            setSendAlert(true);
+            setAlertMessage("Por favor ingrese un apellido valido");
+        }else if(!emailRE.test(student.email)){
+            setSendAlert(true);
+            setAlertMessage("Por favor ingrese un correo valido");
+        }else if(student.phone<=0){
+            setSendAlert(true);
+            setAlertMessage("Por favor ingrese un teléfono valido");
+        }else{
         StudentService.update(student)
         .then(response =>{
             console.log("Estudiante editado correctamente", response.data);
@@ -25,6 +43,7 @@ const EditStudent = () => {
         }).catch(error =>{
             console.log("Ha ocurrido un error al modificar", error);
         });
+        }
     }
 
     useEffect(() => {
@@ -42,8 +61,6 @@ const EditStudent = () => {
             })
         }
     },[])
-
-
 
     return ( 
         <div className="container">
@@ -92,6 +109,8 @@ const EditStudent = () => {
                     placeholder="Modicar el teléfono"
                     />
                 </div>
+                {sendAlert
+						? <div className="alert alert-danger" role="alert">{alertMessage}</div>: null}
                 <div>
                     <button className="btn btn-primary" onClick={(e) =>saveStudent(e)}>Agregar</button>
                 </div>
