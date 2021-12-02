@@ -18,10 +18,15 @@ public class Student {
     @Id
     @Column(unique = true)
     private long id;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String lastName;
+    @Column(nullable = false)
     private int level;
+    @Column(nullable = false)
     private String email;
+    @Column(nullable = false)
     private String phone;
 
     public long getId() {

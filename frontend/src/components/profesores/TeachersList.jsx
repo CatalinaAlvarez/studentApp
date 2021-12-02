@@ -60,11 +60,11 @@ function TeacherList (){
 
   return (
     <div className="container">
-      <h1>Administrar Profesores</h1>
+      <h1>Administrar profesores</h1>
       <hr/>
       <input
-      class="form-control col-4 mb-3"
-      placeholder="Buscar Profesor por Nombre"
+      className="form-control col-4 mb-3"
+      placeholder="Buscar profesor por nombre"
       onChange={searchTeachers}
       ></input>
       <div>

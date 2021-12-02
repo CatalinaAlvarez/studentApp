@@ -11,33 +11,41 @@ const AddTeacher = () => {
     const [level, setLevel] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
+    const [sendAlert, setSendAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState("");
     const history = useHistory();
+    const alfaNumericRE = /[A-Za-z0-9_]/;
+    const emailRE = /^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 
     const saveTeacher = (e) =>{
         e.preventDefault();
 
         const teachers = {id,name, lastName, level, email, phone}
-        TeacherServices.create(teachers)
-        .then(response =>{
-            console.log("Profesor añadido correctamente", response.data);
-            history.push("/profesores");
-        }).catch(error =>{
-            console.log("Ha ocurrido un error al agregar", error);
-        });
+
+        if (!alfaNumericRE.test(teachers.name)) {
+            setSendAlert(true);
+            setAlertMessage("Por favor complete el nombre con caracteres alfanuméricos");
+        }else if(!alfaNumericRE.test(teachers.lastName)){
+            setSendAlert(true);
+            setAlertMessage("Por favor complete el apellido con caracteres alfanuméricos");
+        }else if(!emailRE.test(teachers.email)){
+            setSendAlert(true);
+            setAlertMessage("Por favor ingrese un correo valido");
+        }else if(teachers.id<=0){
+            setSendAlert(true);
+            setAlertMessage("Por favor ingrese un documento valido");
+        }else if(teachers.phone<=0){
+            setSendAlert(true);
+            setAlertMessage("Por favor ingrese un teléfono valido");
+        }else{
+            TeacherServices.create(teachers)
+            .then(response =>{
+                history.push("/profesores");
+            }).catch(error =>{
+                console.log("Ha ocurrido un error al agregar", error);
+            });
+        }
     }
-
-    const [levels, setLevels] = useState([]);
-
-    useEffect(() => {
-        TeacherServices.getAll()
-        .then(response => {
-            setLevels(response.data)
-        })
-        .catch(error => {
-            console.log('Hubo un error', error)
-        })
-    },)
-
 
     return (
         <div className="container">
@@ -74,6 +82,14 @@ const AddTeacher = () => {
                     <input
                     type="text"
                     className="form-control col-4 mb-3"
+                    id="level"
+                    value={level}
+                    onChange={(e) => setLevel(e.target.value)}
+                    placeholder="Ingrese el grado"
+                    />
+                    <input
+                    type="text"
+                    className="form-control col-4 mb-3"
                     id="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -88,6 +104,8 @@ const AddTeacher = () => {
                     placeholder="Ingrese el teléfono"
                     />
                 </div>
+                {sendAlert
+						? <div className="alert alert-danger" role="alert">{alertMessage}</div>: null}
                 <div>
                     <button className="btn btn-primary" onClick={(e) =>saveTeacher(e)}>Agregar</button>
                 </div>

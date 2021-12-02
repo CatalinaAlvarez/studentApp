@@ -18,8 +18,9 @@ import javax.persistence.Table;
 @Table(name = "level")
 public class Level {
     @Id
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private int id;
+    @Column(nullable = false)
     private String name;
 
     public int getId() {

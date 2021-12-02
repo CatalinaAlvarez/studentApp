@@ -12,21 +12,44 @@ const AddStudent = () => {
     const [level, setLevel] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
+    const [sendAlert, setSendAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState("");
     const history = useHistory();
+    const alfaNumericRE = /[A-Za-z0-9_]/;
+    const emailRE = /^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+
 
     const saveStudent = (e) =>{
         e.preventDefault();
 
-        const student = {id,name, lastName, level, email, phone}
-        StudentService.create(student)
-        .then(response =>{
-            console.log("Estudiante añadido correctamente", response.data);
-            history.push("/estudiantes");
-        }).catch(error =>{
-            console.log("Ha ocurrido un error al agregar", error);
-        });
-    }
+        const student = {id,name, lastName, level, email, phone};
 
+        if (!alfaNumericRE.test(student.name)) {
+            setSendAlert(true);
+            setAlertMessage("Por favor complete el nombre con caracteres alfanuméricos");
+        }else if(!alfaNumericRE.test(student.lastName)){
+            setSendAlert(true);
+            setAlertMessage("Por favor complete el apellido con caracteres alfanuméricos");
+        }else if(!emailRE.test(student.email)){
+            setSendAlert(true);
+            setAlertMessage("Por favor ingrese un correo valido");
+        }else if(student.id<=0){
+            setSendAlert(true);
+            setAlertMessage("Por favor ingrese un documento valido");
+        }else if(student.phone<=0){
+            setSendAlert(true);
+            setAlertMessage("Por favor ingrese un teléfono valido");
+        }else{
+            StudentService.create(student)
+            .then(response =>{
+                history.push("/estudiantes");
+            }).catch(error =>{
+                console.log("Ha ocurrido un error al agregar", error);
+            });
+            setSendAlert(false);
+        }
+    }
+    
     return (
         <div className="container">
             <h1>Añadir nuevo estudiante</h1>
@@ -36,7 +59,7 @@ const AddStudent = () => {
             <form>
                 <div className="form-group">
                     <input
-                    type="text"
+                    type="number"
                     className="form-control col-4 mb-3"
                     id="id"
                     value={id}
@@ -60,6 +83,14 @@ const AddStudent = () => {
                     placeholder="Ingrese el apellido"
                     />
                     <input
+                    type="text"
+                    className="form-control col-4 mb-3"
+                    id="level"
+                    value={level}
+                    onChange={(e) => setLevel(e.target.value)}
+                    placeholder="Ingrese el grado"
+                    />
+                    <input
                     type="email"
                     className="form-control col-4 mb-3"
                     id="email"
@@ -68,7 +99,7 @@ const AddStudent = () => {
                     placeholder="Ingrese el correo electrónico"
                     />
                     <input
-                    type="text"
+                    type="number"
                     className="form-control col-4 mb-3"
                     id="phone"
                     value={phone}
@@ -76,6 +107,8 @@ const AddStudent = () => {
                     placeholder="Ingrese el teléfono"
                     />
                 </div>
+                {sendAlert
+						? <div className="alert alert-danger" role="alert">{alertMessage}</div>: null}
                 <div>
                     <button className="btn btn-primary" onClick={(e) =>saveStudent(e)}>Agregar</button>
                 </div>
@@ -85,6 +118,6 @@ const AddStudent = () => {
         </div>
 
      );
+    
 }
-
 export default AddStudent;
