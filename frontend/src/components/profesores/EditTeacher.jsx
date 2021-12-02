@@ -1,75 +1,79 @@
+import { useParams } from "react-router";
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
-import { Link } from 'react-router-dom';
 import TeacherServices from "../../services/TeacherServices";
+import { Link } from 'react-router-dom';
 
-const AddTeacher = () => {
+const EditTeacher = () => {
 
-    const [id, setId] = useState("");
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
     const [level, setLevel] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const history = useHistory();
+    const {id} = useParams();
 
     const saveTeacher = (e) =>{
         e.preventDefault();
 
-        const teachers = {id,name, lastName, level, email, phone}
-        TeacherServices.create(teachers)
+        const teacher = { id, name, lastName, level, email, phone }
+        TeacherServices.update(teacher)
         .then(response =>{
-            console.log("Profesor añadido correctamente", response.data);
+            console.log("Profesor editado correctamente", response.data);
             history.push("/profesores");
         }).catch(error =>{
-            console.log("Ha ocurrido un error al agregar", error);
+            console.log("Ha ocurrido un error al modificar", error);
         });
     }
 
-    const [levels, setLevels] = useState([]);
-
     useEffect(() => {
-        TeacherServices.getAll()
-        .then(response => {
-            setLevels(response.data)
-        })
-        .catch(error => {
-            console.log('Hubo un error', error)
-        })
-    },)
+        if(id){
+            TeacherServices.get(id)
+                .then(teacher => {
+                    setName(teacher.data.name);
+                    setLastName(teacher.data.lastName);
+                    setLevel(teacher.data.level.id);
+                    setEmail(teacher.data.email);
+                    setPhone(teacher.data.phone);
+            })
+            .catch(error => {
+                console.log('Hubo un error', error)
+            })
+        }
+    },[])
 
 
-    return (
+
+    return ( 
         <div className="container">
-            <h1>Añadir nuevo Profesor</h1>
-            <hr/>
-            <p>{}</p>
+            <h1>Editar profesor</h1>
             <hr/>
             <form>
                 <div className="form-group">
                     <input
                     type="text"
                     className="form-control col-4 mb-3"
-                    id="id"
-                    value={id}
-                    onChange={(e) => setId(e.target.value)}
-                    placeholder="Ingrese el Documento"
-                    />
-                    <input
-                    type="text"
-                    className="form-control col-4 mb-3"
                     id="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="Ingrese el nombre"
+                    placeholder="Modicar el nombre"
                     />
                     <input
                     type="text"
                     className="form-control col-4 mb-3"
-                    id="lastName"
+                    id="lasName"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    placeholder="Ingrese el apellido"
+                    placeholder="Modicar el apellido"
+                    />
+                    <input
+                    type="text"
+                    className="form-control col-4 mb-3"
+                    id="level.id"
+                    value={level}
+                    onChange={(e) => setLevel(e.target.value)}
+                    placeholder="Modicar el grado"
                     />
                     <input
                     type="text"
@@ -77,7 +81,7 @@ const AddTeacher = () => {
                     id="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Ingrese el correo electrónico"
+                    placeholder="Modicar el correo electrónico"
                     />
                     <input
                     type="text"
@@ -85,7 +89,7 @@ const AddTeacher = () => {
                     id="phone"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    placeholder="Ingrese el teléfono"
+                    placeholder="Modicar el teléfono"
                     />
                 </div>
                 <div>
@@ -95,8 +99,8 @@ const AddTeacher = () => {
             <hr/>
             <Link to="/profesores">Volver a la lista</Link>
         </div>
-
-);
+        
+     );
 }
 
-export default AddTeacher;
+export default EditTeacher;

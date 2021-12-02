@@ -21,7 +21,7 @@ const EditStudent = () => {
         StudentService.update(student)
         .then(response =>{
             console.log("Estudiante editado correctamente", response.data);
-            history.push("/");
+            history.push("/estudiantes");
         }).catch(error =>{
             console.log("Ha ocurrido un error al modificar", error);
         });
@@ -97,7 +97,7 @@ const EditStudent = () => {
                 </div>
             </form>
             <hr/>
-            <Link to="/">Volver a la lista</Link>
+            <Link to="/estudiantes">Volver a la lista</Link>
         </div>
         
      );

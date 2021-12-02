@@ -21,7 +21,7 @@ const AddStudent = () => {
         StudentService.create(student)
         .then(response =>{
             console.log("Estudiante añadido correctamente", response.data);
-            history.push("/");
+            history.push("/estudiantes");
         }).catch(error =>{
             console.log("Ha ocurrido un error al agregar", error);
         });
@@ -81,7 +81,7 @@ const AddStudent = () => {
                 </div>
             </form>
             <hr/>
-            <Link to="/">Volver a la lista</Link>
+            <Link to="/estudiantes">Volver a la lista</Link>
         </div>
 
      );
