@@ -120,7 +120,7 @@ const EditStudent = () => {
             placeholder="Modicar el correo electrónico"
           />
           <input
-            type="text"
+            type="number"
             className="form-control col-4 mb-3"
             id="phone"
             value={phone}

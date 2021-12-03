@@ -38,7 +38,7 @@ const EditTeacher = () => {
       setAlertMessage("Por favor ingrese un teléfono valido");
     } else if (teacher.level.length <= 0) {
       setSendAlert(true);
-      setAlertMessage("Por favor ingrese un teléfono valido");
+      setAlertMessage("Por favor ingrese un grado valido");
     } else {
       TeacherServices.update(teacher)
         .then((response) => {
@@ -120,7 +120,7 @@ const EditTeacher = () => {
             placeholder="Modicar el correo electrónico"
           />
           <input
-            type="text"
+            type="number"
             className="form-control col-4 mb-3"
             id="phone"
             value={phone}

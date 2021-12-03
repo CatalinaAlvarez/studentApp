@@ -43,7 +43,7 @@ const AddTeacher = () => {
       setAlertMessage("Por favor ingrese un teléfono valido");
     } else if (teachers.level.length <= 0) {
       setSendAlert(true);
-      setAlertMessage("Por favor ingrese un teléfono valido");
+      setAlertMessage("Por favor ingrese un grado valido");
     } else {
       TeacherServices.create(teachers)
         .then((response) => {
@@ -64,7 +64,7 @@ const AddTeacher = () => {
       <form>
         <div className="form-group">
           <input
-            type="text"
+            type="number"
             className="form-control col-4 mb-3"
             id="id"
             value={id}
@@ -117,7 +117,7 @@ const AddTeacher = () => {
             placeholder="Ingrese el correo electrónico"
           />
           <input
-            type="text"
+            type="number"
             className="form-control col-4 mb-3"
             id="phone"
             value={phone}
