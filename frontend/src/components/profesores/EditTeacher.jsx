@@ -17,26 +17,13 @@ const EditTeacher = () => {
   const alfaNumericRE =
     /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
   const emailRE = /^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-  const levels = [
-    "Preescolar",
-    "Primero",
-    "Segundo",
-    "Tercero",
-    "Cuarto",
-    "Quinto",
-    "Sexto",
-    "Séptimo",
-    "Octavo",
-    "Noveno",
-    "Décimo",
-    "Once",
-  ];
 
   const saveTeacher = (e) => {
     e.preventDefault();
 
     const teacher = { id, name, lastName, level, email, phone };
 
+    //Validar campos y modificar profesor
     if (!alfaNumericRE.test(teacher.name)) {
       setSendAlert(true);
       setAlertMessage("Por favor ingrese un nombre valido");
@@ -64,6 +51,7 @@ const EditTeacher = () => {
     }
   };
 
+  //Obtiene el profesor por el id
   useEffect(() => {
     if (id) {
       TeacherServices.get(id)

@@ -12,6 +12,7 @@ function MoreInfoTeacher() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
+  //Obtiene el profesor por el id
   useEffect(() => {
     if (id) {
       TeacherServices.get(id)

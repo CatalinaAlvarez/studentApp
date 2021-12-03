@@ -8,6 +8,7 @@ function GradeList() {
   const [grades, setGrades] = useState([]);
   const { id } = useParams();
 
+  //Obtener nota por el id
   useEffect(() => {
     GradeService.get(id)
       .then((response) => {

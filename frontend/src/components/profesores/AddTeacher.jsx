@@ -22,6 +22,7 @@ const AddTeacher = () => {
 
     const teachers = { id, name, lastName, level, email, phone };
 
+    //Validar campos y añadir profesor
     if (!alfaNumericRE.test(teachers.name)) {
       setSendAlert(true);
       setAlertMessage("Por favor ingrese un nombre valido");

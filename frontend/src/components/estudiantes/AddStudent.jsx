@@ -18,6 +18,7 @@ const AddStudent = () => {
     /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
   const emailRE = /^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 
+  //Guardar estudiantes
   const saveStudent = (e) => {
     e.preventDefault();
 
@@ -36,6 +37,7 @@ const AddStudent = () => {
       english: "",
     };
 
+    //Validar campos
     if (!alfaNumericRE.test(student.name)) {
       setSendAlert(true);
       setAlertMessage("Por favor ingrese un nombre valido");

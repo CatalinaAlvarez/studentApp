@@ -13,6 +13,7 @@ function MoreInfoStudent() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
+  //Información estudiante
   useEffect(() => {
     if (id) {
       StudentService.get(id)

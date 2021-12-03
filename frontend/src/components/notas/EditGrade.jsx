@@ -38,6 +38,7 @@ const EditGrade = () => {
       science,
     };
 
+    //Validar campos y modificar
     if (
       grade.math.length <= 0 ||
       grade.arts.length <= 0 ||

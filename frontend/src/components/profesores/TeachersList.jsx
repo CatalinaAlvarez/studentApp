@@ -8,7 +8,7 @@ function TeacherList() {
   const [teachers, setTeachers] = useState([]);
   const [filterTeachers, setFilterTeachers] = useState([]);
 
-  //FILTRADO POR NOMBRES
+  //Filtrado por la búsqueda
   function searchTeachers(busqueda) {
     const { value } = busqueda.target;
     const filter = teachers.filter(
@@ -21,6 +21,7 @@ function TeacherList() {
     setFilterTeachers(filter);
   }
 
+  //Obtiene todos los profesores
   useEffect(() => {
     TeacherServices.getAll()
       .then((response) => {
@@ -32,7 +33,7 @@ function TeacherList() {
       });
   }, []);
 
-  //DELETE
+  //Borrar profesor
   const init = () => {
     TeacherServices.getAll()
       .then((response) => {

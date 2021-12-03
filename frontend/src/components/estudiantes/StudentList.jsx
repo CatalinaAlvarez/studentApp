@@ -8,7 +8,7 @@ function StudentList() {
   const [students, setStudents] = useState([]);
   const [filterStudents, setFilterStudent] = useState([]);
 
-  //FILTRADO POR NOMBRES
+  //Filtrado en el buscador
   function searchStudents(busqueda) {
     const { value } = busqueda.target;
     const filter = students.filter(
@@ -32,7 +32,7 @@ function StudentList() {
       });
   }, []);
 
-  //DELETE
+  //Borrar estudiante
   const init = () => {
     StudentService.getAll()
       .then((response) => {
