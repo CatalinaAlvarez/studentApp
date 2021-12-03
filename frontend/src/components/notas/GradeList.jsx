@@ -24,7 +24,7 @@ function GradeList() {
       <Link to={`/estudiantes/notas/${id}`} className="notas btn btn-success">
         Modificar
       </Link>
-      <table className="table table-bordered table-striped bt-15">
+      <table className="table table-bordered table-striped">
         <thead className="thead-dark">
           <tr>
             <td>Materias</td>
