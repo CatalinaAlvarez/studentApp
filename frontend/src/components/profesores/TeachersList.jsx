@@ -70,7 +70,7 @@ function TeacherList() {
       <hr />
       <input
         className="form-control col-4 mb-3"
-        placeholder="Buscar profesor por nombre"
+        placeholder="Buscar profesor"
         onChange={searchTeachers}
       ></input>
       <div>

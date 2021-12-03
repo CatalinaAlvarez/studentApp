@@ -71,7 +71,7 @@ function StudentList() {
 
       <input
         className="form-control  mb-3 "
-        placeholder="Buscar estudiante por nombre"
+        placeholder="Buscar estudiante"
         onChange={searchStudents}
       ></input>
 
