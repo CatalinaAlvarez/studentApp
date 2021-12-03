@@ -39,7 +39,7 @@ const EditStudent = () => {
       setAlertMessage("Por favor ingrese un teléfono valido");
     } else if (student.level.length <= 0) {
       setSendAlert(true);
-      setAlertMessage("Por favor ingrese un teléfono valido");
+      setAlertMessage("Por favor ingrese un grado valido");
     } else {
       StudentService.update(student)
         .then((response) => {
