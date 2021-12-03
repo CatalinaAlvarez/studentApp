@@ -52,7 +52,7 @@ const AddTeacher = () => {
 
     return (
         <div className="container">
-            <h1>Añadir nuevo Profesor</h1>
+            <h2 className="mt-5">Añadir nuevo Profesor</h2>
             <hr/>
             <p>{}</p>
             <hr/>

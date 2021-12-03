@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import "bootswatch/dist/united/bootstrap.min.css";
+import "bootswatch/dist/lumen/bootstrap.min.css";
 
 ReactDOM.render(
   <React.StrictMode>

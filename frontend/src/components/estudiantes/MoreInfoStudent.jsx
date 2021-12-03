@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import "bootswatch/dist/united/bootstrap.min.css";
+import "bootswatch/dist/lumen/bootstrap.min.css";
 import StudentService from '../../services/StudentService';
 import { useParams } from "react-router";
 import { Link } from 'react-router-dom';
@@ -34,8 +34,9 @@ function MoreInfoStudent (){
     return (
         <div className="container">
         <br/>
-        <h1>Estudiante {name} {lastName}</h1>
+        <h2 className="mt-5">Estudiante {name} {lastName}</h2>
         <hr/>
+        <h3 className="pb-3">Datos</h3>
         <div>
             <table className= "table table-bordered table-striped">
             <thead className ="thead-dark">
@@ -58,15 +59,18 @@ function MoreInfoStudent (){
                 <td>{email}</td>
                 <td>{phone}</td>
                 <td>
-                    <Link to={`/estudiantes/editar/${id}`} className="btn btn-info">Modificar</Link>
+                    <Link to={`/estudiantes/editar/${id}`} className="btn btn-success">Modificar</Link>
                 </td>
                 </tr>                
             </tbody>
             </table>
+        <hr/>
+        <h3 className="pb-3">Notas</h3>
         <GradeList></GradeList>
         </div>
         <Link to={`/estudiantes`}>Volver a la lista</Link>
         </div>
+
     );
 }
 

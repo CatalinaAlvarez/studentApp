@@ -64,7 +64,7 @@ const EditStudent = () => {
 
     return ( 
         <div className="container">
-            <h1>Editar estudiante</h1>
+            <h2 className="mt-5">Editar estudiante</h2>
             <hr/>
             <form>
                 <div className="form-group">

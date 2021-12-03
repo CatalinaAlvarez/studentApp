@@ -1,7 +1,8 @@
 import React, { useState,useEffect } from 'react';
-import "bootswatch/dist/pulse/bootstrap.min.css";
+import "bootswatch/dist/lumen/bootstrap.min.css";
 import TeacherServices from '../../services/TeacherServices';
 import { Link } from 'react-router-dom';
+import '../../index.css';
 
 
 function TeacherList (){
@@ -60,7 +61,8 @@ function TeacherList (){
 
   return (
     <div className="container">
-      <h1>Administrar profesores</h1>
+      <h2 className="mt-5">Administrar profesores</h2>
+      <Link to="/agregarprofesores" className="agregar btn btn-success mb-3">Agregar profesor</Link>
       <hr/>
       <input
       className="form-control col-4 mb-3"
@@ -68,7 +70,6 @@ function TeacherList (){
       onChange={searchTeachers}
       ></input>
       <div>
-        <Link to="/agregarprofesores" className="btn btn-primary mb-2">Agregar profesor</Link>
         <table className= "table table-bordered table-striped">
         <thead className ="thead-dark">
             <tr>
@@ -89,7 +90,7 @@ function TeacherList (){
                   <td>{teacher.level}</td>
                   <td>
                     <Link to={`/profesores/info/${teacher.id}`} className="btn btn-primary">Más Info...</Link>
-                    <button className="btn btn-danger ml-2" onClick={() => {
+                    <button className="eliminar btn btn-danger ml-2" onClick={() => {
                       handleDelete(teacher.id);
                     }}>Eliminar</button>
                   </td>

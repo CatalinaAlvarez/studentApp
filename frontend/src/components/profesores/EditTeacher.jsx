@@ -68,7 +68,7 @@ const EditTeacher = () => {
 
     return ( 
         <div className="container">
-            <h1>Editar profesor</h1>
+            <h2 className="mt-5">Editar profesor</h2>
             <hr/>
             <form>
                 <div className="form-group">

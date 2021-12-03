@@ -1,0 +1,22 @@
+.navbar{
+    padding: 15px 35px;
+    font-size: 20px;
+}
+
+.agregar{
+    position: absolute;
+    right: 10%;
+    top: 19%
+}
+
+.eliminar{
+    position: relative;
+    left: 5%;
+    top: 19%
+}
+
+.notas{
+    position: absolute;
+    right: 15.3%;
+    top: 57%
+}

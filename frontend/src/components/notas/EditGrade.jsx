@@ -58,7 +58,7 @@ const EditGrade = () => {
 
     return ( 
         <div className="container">
-            <h1>Editar notas</h1>
+            <h2>Editar notas</h2>
             <hr/>
             <form>
                 <div className="form-group">

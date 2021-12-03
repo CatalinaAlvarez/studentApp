@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import "bootswatch/dist/united/bootstrap.min.css";
+import "bootswatch/dist/lumen/bootstrap.min.css";
 import GradeService from '../../services/GradeService';
 import { Link } from 'react-router-dom';
 import { useParams } from "react-router";
@@ -23,7 +23,8 @@ function GradeList (){
 
   return (
     <div className="container">
-        <table className= "table table-bordered table-striped">
+      <Link to={`/estudiantes/notas/${id}`} className="notas btn btn-success">Modificar</Link>
+        <table className= "table table-bordered table-striped bt-15">
         <thead className ="thead-dark">
             <tr>
                 <td>Materias</td>
@@ -71,12 +72,6 @@ function GradeList (){
               <td>Inglés</td>
               <td>{grades.english}</td>
             </tr>
-            <tr key={grades.id}>
-                <td>
-                <Link to={`/estudiantes/notas/${id}`} className="btn btn-primary">Modificar</Link>
-                </td>
-            </tr>
-
           </tbody>
         </table>
     </div>

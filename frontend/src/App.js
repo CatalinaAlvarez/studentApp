@@ -9,7 +9,7 @@ import AddTeacher from "./components/profesores/AddTeacher";
 import EditTeacher from "./components/profesores/EditTeacher";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
-import "bootswatch/dist/udnio/bootstrap.min.css";
+import "bootswatch/dist/lumen/bootstrap.min.css";
 import MoreInfoStudent from "./components/estudiantes/MoreInfoStudent";
 import MoreInfoTeacher from './components/profesores/MoreInfoTeacher';
 import EditGrade from './components/notas/EditGrade';

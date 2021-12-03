@@ -66,7 +66,7 @@ const AddStudent = () => {
     
     return (
         <div className="container">
-            <h1>Añadir nuevo estudiante</h1>
+            <h2 className="mt-5">Añadir nuevo estudiante</h2>
             <hr/>
             <p>{}</p>
             <hr/>

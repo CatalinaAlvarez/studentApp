@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import "bootswatch/dist/united/bootstrap.min.css";
+import "bootswatch/dist/lumen/bootstrap.min.css";
 import TeacherServices from '../../services/TeacherServices';
 import { useParams } from "react-router";
 import { Link } from 'react-router-dom';
@@ -33,8 +33,9 @@ function MoreInfoTeacher (){
     return (
         <div className="container">
         <br/>
-        <h1>Docente {name} {lastName}</h1>
+        <h2 className="mt-5">Docente {name} {lastName}</h2>
         <hr/>
+        <h3 className="pb-3">Datos</h3>
         <div>
             <table className= "table table-bordered table-striped">
             <thead className ="thead-dark">
@@ -57,7 +58,7 @@ function MoreInfoTeacher (){
                 <td>{email}</td>
                 <td>{phone}</td>
                 <td>
-                    <Link to={`/profesores/editar/${id}`} className="btn btn-info">Modificar</Link>
+                    <Link to={`/profesores/editar/${id}`} className="btn btn-success">Modificar</Link>
                 </td>
                 </tr>                
             </tbody>
