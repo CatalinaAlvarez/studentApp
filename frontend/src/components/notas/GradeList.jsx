@@ -22,7 +22,7 @@ function GradeList() {
   return (
     <div className="container">
       <Link to={`/estudiantes/notas/${id}`} className="notas btn btn-success">
-        Modificar
+        Modificar notas
       </Link>
       <table className="table table-bordered table-striped">
         <thead className="thead-dark">
