@@ -13,7 +13,7 @@ function TeacherList (){
   //FILTRADO POR NOMBRES
   function searchTeachers(busqueda){
     const {value} = busqueda.target;
-    const filter = teachers.filter(teacher => teacher.name.toLowerCase().includes(value.toLowerCase()));
+    const filter = teachers.filter(teachers => teachers.name.toLowerCase().includes(value.toLowerCase()) || teachers.lastName.toLowerCase().includes(value.toLowerCase()) || teachers.id.toString().includes(value.toLowerCase()) || teachers.level.toLowerCase().includes(value.toLowerCase()));
     setFilterTeachers(filter);
   }
 

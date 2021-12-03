@@ -8,6 +8,7 @@ import TeacherList from './components/profesores/TeachersList'
 import AddTeacher from "./components/profesores/AddTeacher";
 import EditTeacher from "./components/profesores/EditTeacher";
 import Home from "./components/Home";
+import Footer from './components/Footer'
 import NavBar from "./components/NavBar";
 import "bootswatch/dist/lumen/bootstrap.min.css";
 import MoreInfoStudent from "./components/estudiantes/MoreInfoStudent";
@@ -35,8 +36,8 @@ function App(){
           
           <Route path="*" component={NotFound}/>
         </Switch>
-
       </div>
+      <Footer/>
     </BrowserRouter>
   )
   
